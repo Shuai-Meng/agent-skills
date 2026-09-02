@@ -127,6 +127,55 @@
       "skillFolderHash": "e4a73713a50b5bd6d05c67fefd56d3869f6f166f",
       "installedAt": "2026-09-02T07:52:13.592Z",
       "updatedAt": "2026-09-02T07:52:13.592Z"
+    },
+    "planning-with-files": {
+      "source": "OthmanAdi/planning-with-files",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/OthmanAdi/planning-with-files.git",
+      "skillPath": "skills/planning-with-files/SKILL.md",
+      "skillFolderHash": "16dc6776d97a3bec57a4adbe0b7c3a1ff310ebec",
+      "installedAt": "2026-09-02T09:05:54.556Z",
+      "updatedAt": "2026-09-02T09:05:54.556Z"
+    },
+    "code-review": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/engineering/code-review/SKILL.md",
+      "skillFolderHash": "d8e341cee7980127dddda05159bedf25dc853615",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-09-02T09:23:26.787Z",
+      "updatedAt": "2026-09-02T09:23:26.787Z"
+    },
+    "diagnosing-bugs": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "skillFolderHash": "99bd56983e42bc752c52da67f1112e4121781cd1",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-09-02T09:23:26.789Z",
+      "updatedAt": "2026-09-02T09:23:26.789Z"
+    },
+    "domain-modeling": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/engineering/domain-modeling/SKILL.md",
+      "skillFolderHash": "388c9822641805ca2dcd5038e68a1d5282437ee5",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-09-02T09:23:26.791Z",
+      "updatedAt": "2026-09-02T09:23:26.791Z"
+    },
+    "handoff": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/productivity/handoff/SKILL.md",
+      "skillFolderHash": "2242e8f05424b8c2ae94194a90d97b88d16108ec",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-09-02T09:23:26.791Z",
+      "updatedAt": "2026-09-02T09:23:26.791Z"
     }
   },
   "dismissed": {

@@ -19,12 +19,21 @@ codex plugin add tokmizer@tokmizer || echo "  ! tokmizer 失败：稍后手动 c
 
 echo "[3/6] registry 技能重装（与 skills-lock.json 对齐）"
 command -v npx >/dev/null || { echo "缺少 node/npx"; exit 1; }
-npx -y skills add https://github.com/JuliusBrussee/caveman --skill caveman -g -a codex -y || echo "  ! caveman 失败"
-npx -y skills add https://github.com/anysearch-ai/anysearch-skill -g -a codex -y || echo "  ! anysearch 失败"
-npx -y skills add https://github.com/lokikill123/codex-token-skills --skill memory -g -a codex -y || echo "  ! memory 失败"
-npx -y skills add https://github.com/vercel-labs/skills --skill find-skills -g -a codex -y || echo "  ! find-skills 失败"
-npx -y skills add https://github.com/LearnPrompt/andrej-karpathy-skills --skill karpathy-agentic-engineering -g -a codex -y || echo "  ! karpathy 失败"
-npx -y skills add https://github.com/Egonex-AI/Understand-Anything --skill '*' -g -a codex -y || echo "  ! understand-* 失败"
+mkdir -p "$AGENTS_DIR"
+cp "$KIT/skills-lock.json" "$AGENTS_DIR/.skill-lock.json"
+node -e '
+const lock = require(process.env.HOME + "/.agents/.skill-lock.json");
+const bySource = {};
+for (const [name, s] of Object.entries(lock.skills)) {
+  const url = s.sourceUrl || `https://github.com/${s.source}`;
+  (bySource[url] ||= []).push(name);
+}
+for (const [url, names] of Object.entries(bySource)) {
+  console.log(`npx -y skills add ${url} --skill ${names.join(" --skill ")} -g -a codex -y`);
+}
+' > /tmp/codex-restore-skills.sh
+bash /tmp/codex-restore-skills.sh
+rm -f /tmp/codex-restore-skills.sh
 
 echo "[4/6] 拷贝非 registry 技能"
 mkdir -p "$AGENTS_DIR/skills" "$CODEX_DIR/skills"
@@ -33,7 +42,7 @@ cp -R "$KIT/skills/layered-test-sop/." "$CODEX_DIR/skills/layered-test-sop/"
 
 echo "[5/6] memory 定制覆盖（路径占位符替换为本机）"
 mkdir -p "$AGENTS_DIR/skills/memory"
-cp -R "$KIT/skills/memory-custom/." "$AGENTS_DIR/skills/memory/"
+cp -R "$KIT/skills/memory/." "$AGENTS_DIR/skills/memory/"
 sed -i "s|__CODEX_HOME__|$CODEX_DIR|g" "$AGENTS_DIR/skills/memory/SKILL.md"
 
 echo "[6/6] 完成。剩余手动步骤："
