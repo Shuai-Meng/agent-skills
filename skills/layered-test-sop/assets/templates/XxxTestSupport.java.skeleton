@@ -1,0 +1,19 @@
+// 模式骨架：Mockito 基座。复制后改 Xxx 为被测类名，mock 字段名与生产字段保持一致。
+package <被测类同包>;
+
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+abstract class XxxTestSupport {
+
+    @InjectMocks
+    protected XxxService xxxService;   // 被测类；需要验证私有调用/doReturn 时改 @Spy
+
+    @Mock
+    protected DepA depA;               // TODO: 按被测类依赖补齐，命名与生产字段一致
+
+    // 基座不写测试方法，只放 mock 与注入
+}

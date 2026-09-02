@@ -1,0 +1,4 @@
+interface:
+  display_name: "Layered Test SOP"
+  short_description: "为Java/Spring项目生成三层测试体系并用变异测试验证"
+  default_prompt: "Use $layered-test-sop to generate a three-layer test suite (service unit, DAO unit+smoke, controller guards) with mutation-testing gates for the current project."

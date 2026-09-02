@@ -1,0 +1,151 @@
+{
+  "version": 3,
+  "skills": {
+    "karpathy-agentic-engineering": {
+      "source": "LearnPrompt/andrej-karpathy-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/LearnPrompt/andrej-karpathy-skills.git",
+      "skillPath": "karpathy-agentic-engineering/SKILL.md",
+      "skillFolderHash": "3998e331ff3f8edb16f3377aca19e19bac51e723",
+      "pluginName": "karpathy-skills",
+      "installedAt": "2026-08-25T03:44:21.465Z",
+      "updatedAt": "2026-08-25T03:44:21.465Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-08-25T03:44:26.911Z",
+      "updatedAt": "2026-08-25T03:44:26.911Z"
+    },
+    "caveman": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
+      "skillPath": "skills/caveman/SKILL.md",
+      "skillFolderHash": "70b4ee28a35dbf70934366bd250e71c6cb240082",
+      "installedAt": "2026-09-01T07:59:48.071Z",
+      "updatedAt": "2026-09-01T07:59:48.071Z"
+    },
+    "anysearch": {
+      "source": "anysearch-ai/anysearch-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anysearch-ai/anysearch-skill.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "4d6cef918e9338c9deef43b81ac0f7e22606825f",
+      "installedAt": "2026-09-01T07:59:54.347Z",
+      "updatedAt": "2026-09-01T07:59:54.347Z"
+    },
+    "understand": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand/SKILL.md",
+      "skillFolderHash": "71717fe96e8e479809a4acca9ac4c38138cd2331",
+      "installedAt": "2026-09-01T08:00:13.887Z",
+      "updatedAt": "2026-09-01T08:00:13.887Z"
+    },
+    "understand-chat": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand-chat/SKILL.md",
+      "skillFolderHash": "bae3c467b630980e98641995c3b5221033f1af53",
+      "installedAt": "2026-09-01T08:00:13.890Z",
+      "updatedAt": "2026-09-01T08:00:13.890Z"
+    },
+    "understand-dashboard": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand-dashboard/SKILL.md",
+      "skillFolderHash": "78c13dba34205a2e6017da63e2928d16c51d51a4",
+      "installedAt": "2026-09-01T08:00:13.891Z",
+      "updatedAt": "2026-09-01T08:00:13.891Z"
+    },
+    "understand-diff": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand-diff/SKILL.md",
+      "skillFolderHash": "61b952946f0391a63552c1b3df80714cfc354e0d",
+      "installedAt": "2026-09-01T08:00:13.892Z",
+      "updatedAt": "2026-09-01T08:00:13.892Z"
+    },
+    "understand-domain": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand-domain/SKILL.md",
+      "skillFolderHash": "f8cdc13343e3cadd9c9f2f0c3cca90d673dcb49b",
+      "installedAt": "2026-09-01T08:00:13.894Z",
+      "updatedAt": "2026-09-01T08:00:13.894Z"
+    },
+    "understand-explain": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand-explain/SKILL.md",
+      "skillFolderHash": "39341fa100bad0bd4b3f3fa6e6805a59359325e3",
+      "installedAt": "2026-09-01T08:00:13.894Z",
+      "updatedAt": "2026-09-01T08:00:13.894Z"
+    },
+    "understand-figma": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand-figma/SKILL.md",
+      "skillFolderHash": "72ae2d69cd2867157dbb23a18b200e2711e878da",
+      "installedAt": "2026-09-01T08:00:13.897Z",
+      "updatedAt": "2026-09-01T08:00:13.897Z"
+    },
+    "understand-knowledge": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand-knowledge/SKILL.md",
+      "skillFolderHash": "1b837bdc251b653f46d6e4f7e00dc0e347287295",
+      "installedAt": "2026-09-01T08:00:13.898Z",
+      "updatedAt": "2026-09-01T08:00:13.898Z"
+    },
+    "understand-onboard": {
+      "source": "Egonex-AI/Understand-Anything",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Egonex-AI/Understand-Anything.git",
+      "skillPath": "understand-anything-plugin/skills/understand-onboard/SKILL.md",
+      "skillFolderHash": "fc03d9eef0516290d73e883b6048eaeeba9cc165",
+      "installedAt": "2026-09-01T08:00:13.898Z",
+      "updatedAt": "2026-09-01T08:00:13.898Z"
+    },
+    "memory": {
+      "source": "lokikill123/codex-token-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/lokikill123/codex-token-skills.git",
+      "skillPath": "skills/memory/SKILL.md",
+      "skillFolderHash": "e4a73713a50b5bd6d05c67fefd56d3869f6f166f",
+      "installedAt": "2026-09-02T07:52:13.592Z",
+      "updatedAt": "2026-09-02T07:52:13.592Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "antigravity-cli",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-code-cli",
+    "opencode",
+    "warp",
+    "zed",
+    "claude-code"
+  ]
+}

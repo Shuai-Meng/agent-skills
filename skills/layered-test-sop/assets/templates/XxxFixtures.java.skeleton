@@ -1,0 +1,19 @@
+// 模式骨架：测试数据构造工具。集中放置请求/实体构造，避免用例内重复长参数。
+package <被测类同包>;
+
+import java.util.HashMap;
+import java.util.Map;
+
+final class XxxFixtures {
+
+    private XxxFixtures() {
+    }
+
+    // TODO: 按被测对象补充构造方法，如：
+    // static XxxReq req() { ... }
+    // static Map<String, Object> params(Object... kv) {
+    //     Map<String, Object> map = new HashMap<>();
+    //     for (int i = 0; i < kv.length; i += 2) map.put((String) kv[i], kv[i + 1]);
+    //     return map;
+    // }
+}

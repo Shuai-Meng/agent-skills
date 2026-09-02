@@ -1,0 +1,37 @@
+// 模式骨架：端点清单守卫（契约测试）。黄金清单放 src/test/resources/endpoints/endpoints.json。
+package <controller包>;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest(properties = "spring.main.lazy-initialization=true")
+class EndpointInventoryTest {
+
+    private static final Path GOLDEN = Path.of("src/test/resources/endpoints/endpoints.json");
+
+    @Autowired
+    @Qualifier("requestMappingHandlerMapping")   // 排除 Actuator 的 controllerEndpointHandlerMapping
+    private RequestMappingHandlerMapping handlerMapping;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @Test
+    void endpointManifest_matchesGolden() throws Exception {
+        // TODO: 枚举 handlerMapping.getHandlerMethods()，按 path+method+handler 排序，
+        // 序列化后与 GOLDEN 精确对比；-DupdateGolden=true 重新生成。
+        // 端点工具类要点见 references/controller-layer.md。
+    }
+}

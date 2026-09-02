@@ -1,0 +1,47 @@
+// 模式骨架：Testcontainers 基座（singleton 容器 + 真实 DDL 初始化）。
+package <被测类同包>;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
+import org.springframework.core.io.support.EncodedResource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
+import org.testcontainers.utility.DockerImageName;
+
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.Comparator;
+
+abstract class AbstractContainerTest {
+
+    private static final GenericContainer<?> CONTAINER;
+
+    static {
+        CONTAINER = new GenericContainer<>(DockerImageName.parse("<镜像:tag>"))
+                // ClickHouse 必须设用户/密码，否则镜像禁用 default 网络认证；MySQL 不需要
+                .withEnv("CLICKHOUSE_USER", "test")
+                .withEnv("CLICKHOUSE_PASSWORD", "test")
+                .withExposedPorts(<端口>)
+                .withStartupTimeout(Duration.ofSeconds(180))
+                // 就绪日志可能写入容器内文件而非 stdout → 用 HTTP 探活
+                .waitingFor(Wait.forHttp("/ping").forPort(<端口>));
+        CONTAINER.start();
+        initSchema();   // 每个 JVM 一次
+    }
+
+    static JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(<DataSource 指向 CONTAINER>);
+    }
+
+    private static void initSchema() {
+        // 用真实 DDL 建表（classpath:sql/ddl/...），ScriptUtils 必须用 EOF_STATEMENT_SEPARATOR，
+        // 否则脚本无分号时按行拆分，多行 CREATE TABLE 会被拆坏。
+        // ScriptUtils.executeSqlScript(conn, new EncodedResource(ddl, StandardCharsets.UTF_8),
+        //         false, true, ScriptUtils.DEFAULT_COMMENT_PREFIXES,
+        //         ScriptUtils.EOF_STATEMENT_SEPARATOR,
+        //         ScriptUtils.DEFAULT_BLOCK_COMMENT_START_DELIMITER,
+        //         ScriptUtils.DEFAULT_BLOCK_COMMENT_END_DELIMITER);
+    }
+}

@@ -1,0 +1,46 @@
+# 默认模型（OpenAI Codex 编程专用）
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+model = "deepseek-v4-flash"
+
+# 默认 Provider
+model_provider = "deepseek"
+preferred_auth_method = "apikey"
+forced_login_method = "api"
+model_reasoning_effort = "high"
+model_catalog_json = "~/.codex/models.json"
+
+# 自动压缩阈值：deepseek-v4-flash 上下文 1M(有效窗口 95%)，按 60% 设，避免历史无限膨胀
+model_auto_compact_token_limit = 600000
+
+# 多智能体：子任务进独立上下文，防止主会话历史膨胀（codex-token-saver 建议）
+[features]
+multi_agent = true
+
+# Provider 定义
+[model_providers.ofoxai]
+name = "OfoxAI"
+base_url = "https://api.ofox.io/v1"
+env_key = "OFOXAI_API_KEY"
+wire_api = "responses"
+
+[marketplaces.ponytail]
+source_type = "git"
+source = "https://github.com/DietrichGebert/ponytail.git"
+
+[marketplaces.tokmizer]
+source_type = "git"
+source = "https://github.com/Impulse-Creation/Tokmizer.git"
+
+[plugins."ponytail@ponytail"]
+enabled = true
+
+[plugins."tokmizer@tokmizer"]
+enabled = true
+
+[model_providers.deepseek]
+name = "deepseek"
+base_url = "https://api.deepseek.com/"
+wire_api = "responses"
+# 本机恢复后在此补回 API key（不要提交）

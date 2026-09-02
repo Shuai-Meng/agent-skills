@@ -1,0 +1,24 @@
+// 模式骨架：按业务域拆分的测试类（一个被测类可拆多个，如 XxxAccountTest / XxxQueryTest）。
+package <被测类同包>;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
+
+class XxxDomainTest extends XxxTestSupport {
+
+    @Test
+    void <行为>_<条件>_<结果>() {
+        // Arrange：stub 依赖
+        when(depA.xxx()).thenReturn(...);
+
+        // Act：调用被测方法（包级私有方法可直接访问）
+        var result = xxxService.xxx();
+
+        // Assert：结果 + 交互验证（spy 目标用 verify 击杀"调用被移除"变异）
+        assertEquals(..., result);
+        verify(depA).xxx();
+    }
+}

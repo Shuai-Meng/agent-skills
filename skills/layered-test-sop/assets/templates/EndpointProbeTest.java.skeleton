@@ -1,0 +1,66 @@
+// 模式骨架：端点存活探测守卫。全量上下文 + MockMvc + 认证注入 + 必填参数注入。
+package <controller包>;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.Filter;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.DefaultParameterNameDiscoverer;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.core.ParameterNameDiscoverer;
+import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
+@SpringBootTest(properties = "spring.main.lazy-initialization=true")
+@AutoConfigureMockMvc
+class EndpointProbeTest {
+
+    // TODO: 不适合探测的端点（下载/流式/强状态）显式排除并注明原因
+    private static final java.util.Set<String> SKIP_PATHS = java.util.Set.of();
+
+    @Autowired MockMvc mockMvc;
+    @Autowired @Qualifier("requestMappingHandlerMapping") RequestMappingHandlerMapping handlerMapping;
+    @Autowired ObjectMapper objectMapper;
+
+    private static final ParameterNameDiscoverer NAME_DISCOVERER = new DefaultParameterNameDiscoverer();
+
+    @TestConfiguration
+    static class TestAuthConfig {
+        // SecurityContextHolderFilter 会覆盖手动设置的上下文 → 用请求属性注入认证
+        @Bean
+        @Order(Ordered.HIGHEST_PRECEDENCE)
+        Filter testAuthFilter() {
+            return (request, response, chain) -> {
+                SecurityContext ctx = SecurityContextHolder.createEmptyContext();
+                ctx.setAuthentication(new UsernamePasswordAuthenticationToken(
+                        "admin", null, List.of(new SimpleGrantedAuthority("ROLE_USER"))));
+                request.setAttribute(RequestAttributeSecurityContextRepository.DEFAULT_REQUEST_ATTR_NAME, ctx);
+                chain.doFilter(request, response);
+            };
+        }
+    }
+
+    @Test
+    void allEndpoints_respondWithoutServerError() {
+        // TODO: 遍历端点；GET 无参、POST/PUT/PATCH 空 JSON {}、DELETE 无参；
+        // 必填 @RequestParam 用 NAME_DISCOVERER 解析并注入默认值；{pathVar} 替换为 1；
+        // 断言 status < 500 且 BaseResponse 可解析出 code。
+        // 完整实现要点见 references/controller-layer.md。
+    }
+}
