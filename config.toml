@@ -8,7 +8,8 @@ model = "deepseek-v4-flash"
 model_provider = "deepseek"
 preferred_auth_method = "apikey"
 forced_login_method = "api"
-model_reasoning_effort = "high"
+# 默认 low 省推理 token；复杂任务临时 codex -c model_reasoning_effort=high
+model_reasoning_effort = "low"
 model_catalog_json = "~/.codex/models.json"
 
 # 自动压缩阈值：deepseek-v4-flash 上下文 1M(有效窗口 95%)，按 60% 设，避免历史无限膨胀
