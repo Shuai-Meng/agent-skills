@@ -18,6 +18,7 @@ model_auto_compact_token_limit = 600000
 # 多智能体：子任务进独立上下文，防止主会话历史膨胀（codex-token-saver 建议）
 [features]
 multi_agent = true
+memories = true
 
 # Provider 定义
 [model_providers.ofoxai]
