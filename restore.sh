@@ -12,6 +12,10 @@ mkdir -p "$CODEX_DIR"
 cp "$KIT/config.toml" "$CODEX_DIR/config.toml"
 cp "$KIT/models.json" "$CODEX_DIR/models.json"
 
+echo "[1b] 写入全局 AGENTS.md（质疑优先/需求变更护栏）"
+[ -f "$CODEX_DIR/AGENTS.md" ] && cp "$CODEX_DIR/AGENTS.md" "$CODEX_DIR/AGENTS.md.bak.pre-restore"
+cp "$KIT/codex-AGENTS.md" "$CODEX_DIR/AGENTS.md"
+
 echo "[2/6] 插件重装（清单来自 config.toml 的 [plugins.*]，哈希换机后自动重建）"
 command -v codex >/dev/null || { echo "缺少 codex CLI"; exit 1; }
 codex plugin add ponytail@ponytail || echo "  ! ponytail 失败：稍后手动 codex plugin add ponytail@ponytail"
